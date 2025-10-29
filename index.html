@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CrateJuice — Sonic Postcards (PWA)</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#111"/>
+<style>
+:root{--bg:#0d0d0f;--fg:#eee;--accent:#ff7a00}*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+body{margin:0;background:#0d0d0f;color:var(--fg)}header{padding:16px 20px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800}.install{background:var(--accent);border:none;color:#111;padding:8px 12px;border-radius:8px;font-weight:700}
+main{max-width:980px;margin:24px auto;padding:0 16px}.deck{display:grid;grid-template-columns:1fr 340px;gap:20px}@media(max-width:860px){.deck{grid-template-columns:1fr}}
+.turntable{background:linear-gradient(180deg,#1c1c20,#121215);padding:18px;border-radius:18px;border:1px solid #282828;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+.plinth{background:linear-gradient(180deg,#8e6b44,#5b3f27);border-radius:14px;padding:16px;position:relative}
+.platter{width:340px;height:340px;border-radius:50%;margin:18px auto;background:
+ radial-gradient(closest-side,#222 70%, transparent 71%),
+ radial-gradient(circle at 50% 50%, #111 0 120px, #0d0d0f 120px 170px, #000 170px 171px, #1a1a1d 171px 100%);
+box-shadow:inset 0 0 0 3px #000, inset 0 0 22px rgba(0,0,0,.6);position:relative}
+.label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:110px;height:110px;border-radius:50%;background:#151515 url('art/label.jpg') center/cover no-repeat;box-shadow:inset 0 0 6px #000}
+.dots{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,#c0c0c0 0 2deg, transparent 2deg 12deg);mask:radial-gradient(circle, transparent 0 84px, #000 84px);opacity:.7;mix-blend-mode:screen}
+.arm{position:absolute;width:200px;height:6px;background:#cfd3d6;border-radius:3px;top:42%;left:53%;transform-origin:0 50%;transform:rotate(-20deg)}
+.arm::after{content:'';position:absolute;right:-10px;top:-5px;width:12px;height:12px;border-radius:2px;background:#cfd3d6;box-shadow:0 0 2px #000}
+.light{position:absolute;left:18px;top:18px;width:10px;height:10px;border-radius:50%;background:#ffc400;box-shadow:0 0 12px #ffb300,0 0 30px #ff7a00}
+.controls{display:flex;gap:14px;margin-top:16px}.card{background:#141416;border:1px solid #262629;border-radius:14px;padding:14px}
+.btn{background:#222;border:1px solid #333;color:#f0f0f0;padding:8px 12px;border-radius:8px}.btn.primary{background:var(--accent);color:#111;border:none;font-weight:800}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}label{font-size:12px;color:#aaa}.small{font-size:12px;color:#aaa}
+footer{margin:40px 0 20px;text-align:center;color:#888}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#111;border:1px solid #333;color:#f7f7f7;padding:10px 14px;border-radius:8px;opacity:0;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,-6px)}
+</style></head><body>
+<header><div class="brand">CrateJuice — Sonic Postcards</div><button id="installBtn" class="install" hidden>Install</button></header>
+<main><section class="deck"><div class="turntable"><div class="plinth">
+<div class="light"></div><div class="platter"><div class="label" id="label"></div><div class="dots"></div><div class="arm" id="arm"></div></div>
+<div class="controls row"><button id="start" class="btn primary">Start</button><button id="stop" class="btn">Stop</button>
+<a id="openLink" class="btn" href="#" target="_blank" rel="noreferrer">Open track link</a>
+<div class="row"><label>VU</label><progress id="vu" max="100" value="0" style="height:10px"></progress></div></div>
+<div class="row" style="margin-top:10px"><div class="card"><div class="row">
+<label>User</label><select id="user"><option value="guest">guest</option><option value="memmi">Memmi</option><option value="sebo">Sebo</option><option value="boss">Boss</option><option value="jimbo">Jimbo</option></select>
+<input id="note" placeholder="note / quote (optional)" style="flex:1;min-width:160px"/></div></div></div>
+<audio id="audio" preload="auto" crossorigin="anonymous"><source id="src" src="demo.wav" type="audio/wav"></audio>
+</div></div>
+<aside><div class="card"><b>Crate</b><ul id="crate"></ul><button id="add" class="btn" style="margin-top:8px">+ Add Track</button></div>
+<div class="card small">Tip: append <code>?t=mimis-drift&user=memmi&art=art/mimi.jpg</code> to the URL.</div>
+<div class="card small"><b>Quick QR</b> — open <code>/qr/?u=&lt;encoded URL&gt;</code> for a QR image.</div></aside></section></main>
+<footer>Crate Juice™ 2025 — built with love for Cbo’ &amp; Mimi xo</footer><div id="toast" class="toast">from JUICE with love</div>
+<script src="app.js"></script></body></html>
