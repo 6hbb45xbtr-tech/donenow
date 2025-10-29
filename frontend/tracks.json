@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Anchor Beat \u2014 Sonic Love Letter",
+    "slug": "anchor-beat-sonic-love-letter",
+    "source": "file",
+    "url": "demo.wav",
+    "art": "art/label.jpg"
+  },
+  {
+    "title": "Mimi's Drift",
+    "slug": "mimis-drift",
+    "source": "file",
+    "url": "demo.wav",
+    "art": "art/mimi.jpg"
+  },
+  {
+    "title": "Cbo's Glow",
+    "slug": "cbos-glow",
+    "source": "file",
+    "url": "demo.wav",
+    "art": "art/cbo.jpg"
+  },
+  {
+    "title": "Juice J \u2014 SoundCloud Drop",
+    "slug": "juicej-soundcloud-drop",
+    "source": "soundcloud",
+    "url": "https://on.soundcloud.com/iQXt5D5WL2nCB8ZCTJ",
+    "art": "art/juice.jpg"
+  }
+]
